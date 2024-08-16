@@ -1,15 +1,15 @@
 {
-  "name": "JATE",
+  "name": "note-taker",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start:dev": "npm run start:dev",
-    "start": "node server.js",
-    "server": "cd server nodemon server.js",
-    "build": "npm run build",
-    "install": "npm i",
-    "client": "npm start"
+    "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
+    "start": "npm run build && cd server && node server.js",
+    "server": "cd server nodemon server.js --ignore client",
+    "build": "cd client && npm run build",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "client": "cd client && npm start"
   },
   "keywords": [],
   "author": "",
